@@ -8,26 +8,88 @@ If your firmware is from 2015 or earlier, you have an open telnet service on the
 - **Supported Formats**: `JSON`
 - **HTTP Request**: `GET`
 - **Command**: `getStatus`
+- **Response**:
 
-**Response**:
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
 
-	{
-		"Language": "en_us",
-		"Ssid": "FA5100_a4dc",
-		"Firmware": "WIFIAudio.multil_room.1.2.20140324",
-		"Builddate": "release",
-		"Release": "20140324",
-		"Group": "",
-		"Expired": "0",
-		"Internet": "0",
-		"Uuid": "FF123456nnnnnnnnnnnn",
-		"Netstat": "0",
-		"Essid": "",
-		"Apcli0": "",
-		"Eth2": "192.168.120.112",
-		"Hardware": "Wi Mu-A03",
-		......
-	}
+```JSON
+{
+  "language": "en_us",
+  "ssid": "StreamSystem_EB44",
+  "hideSSID": "1",
+  "SSIDStrategy": "2",
+  "firmware": "4.2.8020",
+  "build": "release",
+  "project": "WF-100",
+  "priv_prj": "WF-100",
+  "Release": "20200220",
+  "branch": "stable/wiimu-4.2",
+  "group": "0",
+  "expired": "0",
+  "internet": "1",
+  "uuid": "FF31F09E49BA274A8FB72CBC",
+  "MAC": "00:22:6C:ED:EB:44",
+  "STA_MAC": "00:22:6C:ED:EB:46",
+  "CountryCode": "CN",
+  "CountryRegion": "1",
+  "date": "2020:11:29",
+  "time": "01:04:57",
+  "tz": "1.000000",
+  "dst_enable": "1",
+  "netstat": "2",
+  "essid": "57696E6B656C6761737365",
+  "apcli0": "10.213.69.120",
+  "eth2": "0.0.0.0",
+  "hardware": "A31",
+  "VersionUpdate": "0",
+  "NewVer": "0",
+  "mcu_ver": "5",
+  "mcu_ver_new": "0",
+  "dsp_ver_new": "0",
+  "ra0": "10.10.10.254",
+  "temp_uuid": "6BDAA886A032AD09",
+  "cap1": "0x5200",
+  "capability": "0x8a96a00",
+  "languages": "0x6",
+  "dsp_ver": "0",
+  "streams_all": "0x7ffffffe",
+  "streams": "0x7ffffffe",
+  "region": "unknown",
+  "external": "0x0",
+  "preset_key": "10",
+  "plm_support": "0x0",
+  "spotify_active": "0",
+  "lbc_support": "0",
+  "WifiChannel": "11",
+  "RSSI": "-39",
+  "battery": "0",
+  "battery_percent": "0",
+  "securemode": "0",
+  "ali_pid": "EDIFIER_ENTERTAINMENT_ATALK_MA1",
+  "ali_uuid": "",
+  "iot_ver": "1.0.0",
+  "upnp_version": "1005",
+  "upnp_uuid": "uuid:FF31F09E-49BA-274A-8FB7-2CBCFF31F09E",
+  "uart_pass_port": "8899",
+  "communication_port": "8819",
+  "web_firmware_update_hide": "0",
+  "web_login_result": "-1",
+  "ignore_talkstart": "0",
+  "silenceOTATime": "",
+  "ignore_silenceOTATime": "1",
+  "new_tunein_preset_and_alarm": "1",
+  "iheartradio_new": "1",
+  "security": "https/2.0",
+  "security_version": "2.0",
+  "privacy_mode": "0",
+  "user1": "290:524",
+  "user2": "1896:2097",
+  "DeviceName": "Werkstatt",
+  "GroupName": "Werkstatt"
+}
+```
+</details>
 
 **Description of Fields**:
 
@@ -83,6 +145,10 @@ Fields | Description
 - **Command**: `getsyslog`
 - WARNING! Only available in recent Firmware
 - **Response**:
+
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
 ```
 	<!doctype html>
 	<html>
@@ -94,25 +160,55 @@ Fields | Description
 		</body>
 	</html>
 ```
+</details>
 
 ## Network connection configuration WIFI
 Get list of WIFI networks Available (SSID)
-`http://$ReceiverIpAddress/httpapi.asp?command=wlanGetApList`
+`http://$ReceiverIpAddress/httpapi.asp?command=wlanGetApListEx`
 - **Description**: List all wifi networks (SSID) identified.
 - **Supported Formats**: `JSON`
 - **HTTP Request**: `GET`
 - **Command**: `wlanGetApListEx`
 - **Response**: (here 3 wifi networks)
 
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
+{
+  "res": "3",
+  "aplist": [
+    {
+      "ssid": "57696E6B656C6761737365",
+      "bssid": "74:83:c2:3a:12:63",
+      "rssi": "100",
+      "channel": "11",
+      "auth": "WPA2PSK",
+      "encry": "AES",
+      "extch": "0"
+    },
+    {
+      "ssid": "41312D326233656131",
+      "bssid": "8c:59:c3:2b:3e:a5",
+      "rssi": "24",
+      "channel": "11",
+      "auth": "WPA2PSK",
+      "encry": "AES",
+      "extch": "0"
+    },
+    {
+      "ssid": "42657465696765757A65556E694669",
+      "bssid": "18:e8:29:9d:75:c5",
+      "rssi": "0",
+      "channel": "11",
+      "auth": "WPA2PSK",
+      "encry": "AES",
+      "extch": "0"
+    }
+  ]
+}
 ```
-	{"Res": "0", "aplist": [
-	{"Ssid": "wmmAudio_a7b8", "bssid": "00: 22: 6c: 00: a7: b8", "rssi"
-	Th ":" OPEN "," encry ":" NONE "," extch ":" 1 "},
-	(Ssid): "WIIMU_Network", "bssid": "20: dc: e6: cb: 7e: 78", "rssi"
-	Th ":" WPA2PSK "," encry ":" AES "," extch ":" 0 "},
-	{"Ssid": "WIFIAudio_29b0", "bssid": "00: 22: 6c: 16: 29: b0", "rssi": "65"
-	Th ":" OPEN "," encry ":" NONE "," extch ":" 0 "}]}
-```
+</details>
 
 **Description of fields**:
 
@@ -197,7 +293,10 @@ Field | Description
 - **Command**: `getNetwork`
 - **WiFi**:
 
-```
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
 {
 	  "securemode": "1",
 	  "auth": "WPAPSKWPA2PSK",
@@ -205,7 +304,7 @@ Field | Description
 	  "psk": "wifipassword"
 }
 ```
-
+</details>
 
 Field | description
 ------|------------
@@ -221,27 +320,35 @@ Field | description
 - **Supported Formats**: `JSON`
 - **HTTP Request**: `GET`
 - **Command**: `getPlayerStatus`
-- **Response**:
+- **HTTP-Response**:
 
-```
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
 {
-		"Type": "0",
-		"Ch": "0",
-		"Mode": "10", "
-		"Loop": "0", "
-		"Status": "play",
-		"Curpos": "12900",
-		"Totlen": "229000",
-		"Title": "736865",
-		"Artist": "47726f6f766520436f766572616765",
-		"Album": "xxxxxxxxxx",
-		"Plicount": "1",
-		"Plicurr": "1",
-		"Flight": "90",
-		"Mute": "0"
+  "type": "0",
+  "ch": "0",
+  "mode": "1",
+  "loop": "0",
+  "eq": "0",
+  "status": "stop",
+  "curpos": "3970000",
+  "offset_pts": "59844",
+  "totlen": "-92208000",
+  "Title": "575231313535204D61782D506C616E636B2D496E7374697475742066C3BC7220467261756E686F666572696E737469747574736572776569746572756E67",
+  "Artist": "486F6C676572204B6C65696E2C20466C6F7269616E204672656973746574746572",
+  "Album": "5752494E543A2057697373656E736368616674",
+  "alarmflag": "0",
+  "plicount": "0",
+  "plicurr": "0",
+  "vol": "58",
+  "mute": "0",
+  "iuri": "",
+  "uri": ""
 }
 ```
-
+</details>
 
 Field | description
 ------|------------
@@ -260,8 +367,6 @@ Field | description
 `plicurr` | The current track of the playlist index
 `vol` | Current volume
 `mute` | Is currently muted
-
-
 
 ## Playing a Playlist
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playlist:uri:<index>`
@@ -283,8 +388,6 @@ Field | description
 	- **setPlayerCmd**: `onepause`
 	- **setPlayerCmd**: `resume`
 	- **Response**: `OK`
-
-
 
 ## Playing music
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play:<URI>`
@@ -310,7 +413,6 @@ Field | description
 - **Command**: `setPlayerCmd:next`
 - **Response**: `OK`
 
-
 ## Fast forward and rewind
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:seek:position`
 - **Description**: Allows you to play back or fast-forward one
@@ -328,7 +430,6 @@ piece
 - **Command**: `setPlayerCmd:stop`
 - **Response**: `OK`
 
-
 ## Adjusting volume
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value`
 - **Description**: Adjusting the volume of the player, the value is one volume value of `0-100`. Speakers will also change the volume Main and under loudspeaker
@@ -336,7 +437,6 @@ piece
 - **HTTP Request**: `GET`
 - **Command**: `setPlayerCmd:vol:value`
 - **Response**: `OK`
-
 
 ## Mute mode
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1`
@@ -355,8 +455,6 @@ piece
 - **Command**: `setPlayerCmd:loopmode:0`
 - **Response**: `OK`
 
-
-
 ## Adjusting the Equalizer Mode
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:equalizer:mode`
 - **Description**: Adjusts the equalizer.<br>Available options:<br>`0`: Close Equalizer Mode<br>`1`: Classic Mode<br>`2`: mode Popular<br>`3`: mode Jazzy<br>`4`: Vocal Mode
@@ -374,7 +472,6 @@ piece
 - **Response**: Mode `0/1/2/3/4`<br>(See modes explained in previous paragraf (set))
 
 # Playback Control  MicroSD Card
-
 ## Viewing the File List
 `http://$ReceiverIpAddress/httpapi.asp?command=getLocalPlayList`
 - **Description**: Get a list of music files on the Disk, the list of network files to return the results
@@ -383,7 +480,10 @@ piece
 - **Command**: `getLocalPlayList`
 - **Response**:
 
-```
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
 	{
 		"Num": "2",
 		"Locallist": [
@@ -397,6 +497,7 @@ piece
 		]
 	}
 ```
+</details>
 
 **Description of fields**:
 
@@ -416,7 +517,10 @@ Field | Description
 - **Response**:
 If num is greater than 1, the file info returned is multiple.
 
-```
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
 {
 	"Num": "2", "infolist": [
 		{
@@ -436,6 +540,7 @@ If num is greater than 1, the file info returned is multiple.
 	]
 }
 ```
+</details>
 
 If num is less than 1, the file info return is unique;
 
@@ -448,8 +553,6 @@ If num is less than 1, the file info return is unique;
 	"Album": "unknown"
 }
 ```
-
-
 
 
 **Description of fields**:
@@ -477,6 +580,9 @@ getLocalPlayList playlists, playing songs automatically.
 - **Command**: `getCacheList`
 - **Response**:
 
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
 ```
 {
 	"Num": "2",
@@ -490,6 +596,7 @@ getLocalPlayList playlists, playing songs automatically.
 	]
 }
 ```
+</details>
 
 **Description of fields**:
 
@@ -508,7 +615,10 @@ each of the files, on the basis of the index of each one in the list and from 0.
 - **Command**: `getCacheFileInfo:index:range`
 - **Response**: If `num` is greater than 1, the `fileinfo` returned is multiple.
 
-```
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
 {
 	"Num": "2", "infolist": [
 		{
@@ -522,15 +632,20 @@ each of the files, on the basis of the index of each one in the list and from 0.
 	]
 }
 ```
+</details>
 
 If `num` is 1, the `fileinfo` returned is single.
 
-```
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
 {
 	"Filename": "/media/sda1/avrilavigne - hush hush.mp3",
 	"Metadata": "unknown",
 }
 ```
+</details>
 
 **Description of fields**:  
 
@@ -548,7 +663,10 @@ Field | Description
 - **Command**: `multiroom:getSlaveList`
 - **Response**:
 
-```
+<details>
+<summary><i>HTTP-Response: (Click to expand)</i></summary>
+
+```JSON
 {
 	"Slaves": "1",
 	"Slave_list": [
@@ -564,6 +682,7 @@ Field | Description
 	]
 }
 ```
+</details>
 
 Field | Description
 ------|-------------
@@ -576,7 +695,6 @@ Field | Description
 `Channel` |  WiFi channel
 `ip` | IP address of the LinkPlay Boot
 `version` | firmware version
-
 
 ## Removing a LinkPlay from the multi-room
 `http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveKickout:ip`
@@ -618,7 +736,6 @@ Field | Description
 - **HTTP Request**: `GET`
 - **Command**: `setPlayerCmd:slave_vol:volume`
 - **Response**: `OK`
-
 
 ## Individual muting
 `http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveMute:ip:mute`
@@ -817,9 +934,10 @@ Value | Meaning
 - **Command**: `getMvRemoteUpdateStart`
 - **Response**:
 
-```	
+```JSON
 {
-	" status ":" 0 "," progress ":" 50 "
+	"status": "0",
+	"progress": "50"
 }
 ```
 
@@ -865,7 +983,6 @@ Field | Description
 `operatio` | "%d"
 `Time` | Format: `%02h%02m%02s`<br>mode Just ounce - "Date": "% 02d:% 02d:% 02d" or no <br>mode Every week (extended mode included) - "WEEK_DAY": "%d"<br>mode Every day - "day" "% 02d "" time ":"% 02d: 02d:% 02d "
 `path` | "%s"
-
 
 ## Off alarm
 `http://$ReceiverIpAddress/httpapi.asp?command=alarmStop`
